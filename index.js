@@ -31,15 +31,24 @@ class ImageResizer {
         this.allowedResolutions = allowedResolutions || ALLOWED_RESOLUTIONS;
     }
 
+    /**
+     * Runs resizing sequence, together with some pre-checks.
+     * If width and heights of target image are not being set - simply copy the image,
+     * from source to destination.
+     * @returns {Promise<void>}
+     */
     async run() {
-        await this.verify();
-
+        this.verify();
         if (this.w !== Jimp.AUTO || this.h !== Jimp.AUTO)
             await this.resize();
         else
             await this.copy();
     }
 
+    /**
+     * Verify that target image has allowed resolution and allowed resolution.
+     * Otherwise - throw the exception.
+     */
     verify() {
         if (!this.allowedExtensions.includes(this.sourcePath.slice(-3))) {
             throw new Error('UNSUPPORTED_EXTENSION')
@@ -49,6 +58,11 @@ class ImageResizer {
         }
     }
 
+    /**
+     * That's where all the magic happens.
+     * Resize an image to desired width/height and save it to destPath.
+     * @returns {Promise<Jimp>}
+     */
     async resize() {
         const image = await Jimp.read(this.sourcePath);
 
@@ -57,12 +71,24 @@ class ImageResizer {
             .write(this.destPath);
     }
 
+    /**
+     * Copy image from source to target destination.
+     * @returns {Promise<void>}
+     */
     async copy() {
         await fs.copy(this.sourcePath, this.destPath);
     }
 }
 
+/**
+ * ImageResizeBuilder adds some simplification for ImageResizer usage.
+ * It helps to avoid all possible configuration hell, keeping powerful mechanism reachable by engineer.
+ */
 class ImageResizeBuilder {
+    /**
+     * @param srcFolder
+     * @param pubFolder
+     */
     constructor(srcFolder, pubFolder) {
         this.srcFolder = srcFolder;
         this.pubFolder = pubFolder;
