@@ -1,0 +1,33 @@
+{
+  "name": "reimage-cdn",
+  "version": "0.0.1",
+  "description": "service to resize images and store them in public folder. next time you visit an image - hit it directly from folder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf public/*"
+  },
+  "keywords": [
+    "image",
+    "cdn",
+    "resize images",
+    "fastify",
+    "image"
+  ],
+  "author": "Roman Shuvaryk <rk.xtd@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^7.0.1",
+    "jimp": "^0.6.0"
+  },
+  "devDependencies": {
+    "express": "^4.16.4",
+    "fastify": "^1.13.1",
+    "fastify-static": "^1.0.0",
+    "lodash": "^4.17.11",
+    "mocha": "^5.2.0",
+    "random-text-meme": "^1.1.2",
+    "restana": "^2.5.0",
+    "serve-static": "^1.13.2"
+  }
+}
