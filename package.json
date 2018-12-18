@@ -1,5 +1,5 @@
 {
-  "name": "reimage-cdn",
+  "name": "icdn",
   "version": "0.0.1",
   "description": "service to resize images and store them in public folder. next time you visit an image - hit it directly from folder",
   "main": "index.js",
@@ -17,6 +17,9 @@
   ],
   "author": "Roman Shuvaryk <rk.xtd@hotmail.com>",
   "license": "MIT",
+  "homepage": "https://github.com/xcomanche/icdn",
+  "url": "https://github.com/xcomanche/icdn/issues",
+  "email": "rk.xtd@hotmail.com",
   "dependencies": {
     "fs-extra": "^7.0.1",
     "jimp": "^0.6.0"
