@@ -1,10 +1,10 @@
 const expect = require('chai').expect;
-const { ImageResizer, ImageResizeBuilder } = require('./index');
+const { ImageResizeBuilder } = require('./index');
 const fs = require('fs');
 
 describe('we <3 testing =^._.^= ∫', () =>  {
     describe('ᕕ( ᐛ )ᕗ Tests ImageResizeBuilder', () => {
-        const Builder = new ImageResizeBuilder('./test/src', './test/thumbnails');
+        const Builder = new ImageResizeBuilder('./test/original', './test/thumbnails');
         describe('三ᕕ( ᐛ )ᕗ Testing setAllowedExtensions', () => {
             it('三三ᕕ( ᐛ )ᕗ should check if allowedExtensions set properly', () => {
                 Builder.setAllowedExtensions(['tiff', 'gif', 'og3']);
