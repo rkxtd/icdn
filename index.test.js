@@ -33,5 +33,20 @@ describe('we <3 testing =^._.^= ∫', () =>  {
                 }
             });
         });
+
+        describe('三ᕕ( ᐛ )ᕗ Testing setMiddleware', () => {
+            it('三三ᕕ( ᐛ )ᕗ should check if middleware set properly', () => {
+                Builder.setMiddleware(() => 'Test');
+                expect(JSON.stringify(Builder.next())).to.be.eq('"Test"');
+            });
+            it('三三ᕕ( ᐛ )ᕗ should check if middleware throws exception when non function passed', (done) => {
+                try {
+                    Builder.setMiddleware('Test');
+                } catch (e) {
+                    expect(e.message).to.be.eq('MIDDLEWARE_FUNCTION_EXPECTED');
+                    done();
+                }
+            });
+        });
     });
 });

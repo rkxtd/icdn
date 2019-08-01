@@ -30,9 +30,9 @@
     "express": "^4.16.4",
     "fastify": "^1.13.1",
     "fastify-static": "^1.0.0",
-    "lodash": "^4.17.11",
-    "mocha": "^5.2.0",
-    "nyc": "^13.1.0",
+    "lodash": "^4.17.15",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
     "random-text-meme": "^1.1.2",
     "restana": "^2.5.0",
     "serve-static": "^1.13.2"
