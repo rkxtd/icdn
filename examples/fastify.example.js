@@ -12,9 +12,7 @@ fastify.register(require('fastify-static'), {
 });
 
 fastify.setNotFoundHandler(new ImageResizeBuilder(SRC_FOLDER, PUB_FOLDER)
-    .setReqPath({
-        originalUrl: 'raw.url'
-    })
+    .setReqUrlPath('raw.url')
     .build());
 
 fastify.get('/', async () => {

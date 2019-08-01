@@ -95,45 +95,45 @@ class ImageResizeBuilder {
         this.regex = DIMENSION_REGEX;
         this.allowedExtensions = null;
         this.allowedResolutions = null;
-        this.reqPath = null;
+        this.reqUrlPath = null;
         this.next = () => {};
     }
 
     setAllowedExtensions(allowedExtensions) {
-        if (!Array.isArray(allowedExtensions)) throw new Error('EXTENSIONS_ARRAY_EXPECTED');
+        if (!Array.isArray(allowedExtensions)) throw new Error('EXTENSIONS_ARRAY_REQUIRED');
 
         this.allowedExtensions = allowedExtensions;
         return this;
     }
 
     setAllowedResolutions(allowedResolutions) {
-        if (!Array.isArray(allowedResolutions)) throw new Error('RESOLUTIONS_ARRAY_EXPECTED');
+        if (!Array.isArray(allowedResolutions)) throw new Error('RESOLUTIONS_ARRAY_REQUIRED');
 
         this.allowedResolutions = allowedResolutions;
         return this;
     }
 
     setMiddleware(next) {
-        if (typeof next !== 'function') throw new Error('MIDDLEWARE_FUNCTION_EXPECTED');
+        if (typeof next !== 'function') throw new Error('MIDDLEWARE_FUNCTION_REQUIRED');
 
         this.next = next;
         return this;
     }
 
-    setReqPath(reqPath) {
-        if (typeof reqPath !== 'object' || reqPath === null)
-            throw new Error('REQPATH_OBJECT_EXPECTED');
+    setReqUrlPath(reqUrlPath) {
+        if (typeof reqUrlPath !== 'string')
+            throw new Error('REQ_URL_PATH_STRING_REQUIRED');
 
-        this.reqPath = reqPath;
+        this.reqUrlPath = reqUrlPath;
         return this;
     }
 
     build(gReq, gRes) {
-        if (!this.reqPath) throw new Error('NO_REQ_PATH');
+        if (!this.reqUrlPath) throw new Error('REQ_URL_PATH_REQUIRED');
         return async (lReq, lRes) => {
             const req = lReq || gReq;
             const res = lRes || gRes;
-            const query = get(req, this.reqPath.originalUrl).replace(/^\/+/g, '');
+            const query = get(req, this.reqUrlPath).replace(/^\/+/g, '');
             const dest = `${this.pubFolder}/${query}`;
             const [w, h] = this.getDimensions(query, this.regex);
             const source = `${this.srcFolder}/${query.replace(`${w}x${h}/`, '')}`;
@@ -141,7 +141,7 @@ class ImageResizeBuilder {
             try {
                 await new ImageResizer(w, h, source, dest, this.allowedExtensions, this.allowedResolutions).run();
                 res.writeHead(302,
-                    {Location: get(req, this.reqPath.originalUrl)}
+                    { Location: get(req, this.reqUrlPath) }
                 );
                 res.end();
             } catch (e) {

@@ -4,7 +4,7 @@
   "description": "service to resize images and store them in public folder. next time you visit an image - hit it directly from folder",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --reporter=html --reporter=text mocha './**.test.js' --timeout=3000",
+    "test": "rimraf test/thumbnails && nyc --reporter=html --reporter=text mocha './**.test.js' --timeout=3000",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "clean": "rm -rf public/*"
   },
@@ -21,20 +21,21 @@
   "url": "https://github.com/xcomanche/icdn/issues",
   "email": "rk.xtd@hotmail.com",
   "dependencies": {
-    "fs-extra": "^7.0.1",
-    "jimp": "^0.6.0"
+    "fs-extra": "^8.1.0",
+    "jimp": "^0.6.4"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "coveralls": "^3.0.2",
     "express": "^4.16.4",
-    "fastify": "^1.13.1",
-    "fastify-static": "^1.0.0",
+    "fastify": "^2.7.1",
+    "fastify-static": "^2.5.0",
     "lodash": "^4.17.15",
     "mocha": "^6.2.0",
     "nyc": "^14.1.1",
     "random-text-meme": "^1.1.2",
-    "restana": "^2.5.0",
+    "restana": "^3.3.1",
+    "rimraf": "^2.6.3",
     "serve-static": "^1.13.2"
   }
 }

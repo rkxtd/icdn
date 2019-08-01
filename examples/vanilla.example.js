@@ -12,9 +12,7 @@ const serve = serveStatic('public', {});
 const server = http.createServer(function onRequest (req, res) {
     serve(req, res, new ImageResizeBuilder(SRC_FOLDER, PUB_FOLDER)
         .setMiddleware(finalhandler)
-        .setReqPath({
-            originalUrl: 'url'
-        })
+        .setReqUrlPath('url')
         .build(req, res));
 });
 
