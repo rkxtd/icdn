@@ -1,6 +1,6 @@
 {
   "name": "icdn",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "service to resize images and store them in public folder. next time you visit an image - hit it directly from folder",
   "main": "index.js",
   "scripts": {
