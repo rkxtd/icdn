@@ -146,7 +146,7 @@ class ImageResizeBuilder {
                 res.end();
             } catch (e) {
                 res.writeHead(500, { 'Content-Type': 'application/json'});
-                res.write(JSON.stringify(e));
+                res.write(JSON.stringify({ err: e.message }));
                 res.end();
             }
             this.next(req, res);

@@ -21,7 +21,7 @@
   "url": "https://github.com/xcomanche/icdn/issues",
   "email": "rk.xtd@hotmail.com",
   "dependencies": {
-    "fs-extra": "^8.1.0",
+    "fs-extra": "^9.0.1",
     "jimp": "^0.14.0"
   },
   "devDependencies": {
