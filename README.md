@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/xcomanche/icdn.svg?branch=master)](https://travis-ci.org/xcomanche/random-text-meme)
+[![Build Status](https://travis-ci.org/xcomanche/icdn.svg?branch=master)](https://travis-ci.org/xcomanche/icdn)
 [![Coverage Status](https://coveralls.io/repos/github/xcomanche/icdn/badge.svg?branch=master)](https://coveralls.io/github/xcomanche/icdn?branch=master)
 [![npm version](http://img.shields.io/npm/v/icdn.svg?style=flat)](https://www.npmjs.com/package/icdn "View this project on npm")
 [![Maintainability](https://api.codeclimate.com/v1/badges/689675c1c6d30a3befe9/maintainability)](https://codeclimate.com/github/xcomanche/icdn/maintainability)
